@@ -30,6 +30,7 @@ integer_constant	{unsigned_integer}
 real_constant		{unsigned_real}
 
 %%
+{assign}				{printf("ASSIGN ");}
 {addop}         		{printf("ADDOP ");}
 {relop}         		{printf("RELOP ");}
 {mulop}         		{printf("MULOP ");}
