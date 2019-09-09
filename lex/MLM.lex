@@ -42,10 +42,11 @@ real_constant		{unsigned_real}
 {until}    				{printf("UNTIL ");}
 {end}    				{printf("END ");}
 {do}    				{printf("DO ");}
-{identifier}    		{printf("IDENTIFIER ");}
+{boolean_constant}		{printf("BOOLEAN_CONSTANT ");}
 {integer_constant}    	{printf("INTEGER_CONSTANT ");}
 {real_constant}	    	{printf("REAL_CONSTANT ");}
 {char_constant}    		{printf("CHAR_CONSTANT ");}
+{identifier}    		{printf("IDENTIFIER ");}
 %%
 #include<stdio.h>
 
