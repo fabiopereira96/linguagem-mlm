@@ -23,6 +23,17 @@
 %token <strVal> RELOP
 %token <strVal> MULOP
 
+%token <strVal> READ
+%token <strVal> WRITE
+%token <strVal> IF
+%token <strVal> THEN
+%token <strVal> ELSE
+%token <strVal> DO
+%token <strVal> BEGIN
+%token <strVal> END
+%token <strVal> WHILE
+%token <strVal> UNTIL
+
 %token <strVal> IDENTIFIER
 %token <intVal> INTEGER_C
 %token <realVal> REAL_C
@@ -32,8 +43,64 @@
 /* Rule Section */
 %%
 
-program  :  expr  {printf("done\n"); exit(0);}
+program  :  PROGRAM IDENTIFIER SEMI_COLON decl_list compound_stmt  {printf("done\n"); exit(0);}
 		 ;
+
+decl_list  :  decl_list SEMI_COLON decl
+		   |  decl
+		   ;
+
+decl  :  ident_list COLON TYPE
+
+ident_list  :  ident_list COMMA IDENTIFIER
+			|  IDENTIFIER
+			;
+
+compount_stmt  :  BEGIN stmt_list END
+			   ;
+
+stmt_list  :  stmt_list SEMI_COLON stmt
+		   |  stmt
+		   ;
+
+stmt  :  assignt_stmt
+	  |  if_stmt
+	  |  loop_stmt
+	  |  read_stmt
+	  |  write_stmt
+	  |  compound_stmt
+	  ;
+
+assign_stmt  :  IDENTIFIER ASSIGN expr
+			 ;
+
+if_stmt  :  IF cond THEN stmt
+		 |  IF cond THEN stmt ELSE stmt
+		 ;
+
+cond  :  expr
+	  ;
+
+loop_stmt  :  stmt_prefix DO stmt_list stmt_suffix
+		   ;
+
+stmt_prefix  :  WHILE cond
+			 |  /* empty */
+			 ;
+
+stmt_suffix  :  UNTIL cond
+			 |  END
+			 ;
+
+read_stmt  :  READ BRACKET_OPEN ident_list BRACKET_CLOSE
+		   ;
+
+write_stmt  :  WRITE BRACKET_OPEN expr_list BRACKET_CLOSE
+			;
+
+expr_list  :  expr
+		   |  expr_list COMMA expr
+		   ;
 
 expr  :  simple_expr	{printf("simple_expr\n");}
 	  |  simple_expr RELOP simple_expr	{printf("simple_expr RELOP simple_expr\n");}

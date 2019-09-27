@@ -36,8 +36,25 @@ boolean_constant	"true"|"false"
 {relop}					{yylval.strVal = strdup(yytext); return RELOP;}
 {mulop}					{yylval.strVal = strdup(yytext); return MULOP;}
 
+"integer" |
+"real"	  |
+"char"	  |
+"boolean" 				{yylval.strVal = strdup(yytext); return TYPE;}
+
+"read"					{yylval.strVal = strdup(yytext); return READ;}
+"write"					{yylval.strVal = strdup(yytext); return WRITE;}
+"if"					{yylval.strVal = strdup(yytext); return IF;}
+"then"					{yylval.strVal = strdup(yytext); return THEN;}
+"else"					{yylval.strVal = strdup(yytext); return ELSE;}
+"do"					{yylval.strVal = strdup(yytext); return DO;}
+"begin"					{yylval.strVal = strdup(yytext); return BEGIN;}
+"end"					{yylval.strVal = strdup(yytext); return END;}
+"while"					{yylval.strVal = strdup(yytext); return WHILE;}
+"until"					{yylval.strVal = strdup(yytext); return UNTIL;}
+
 "'"						{return SINGLE_QUOTES;}
 ","						{return COMMA;}
+";"						{return COLON;}
 ";"						{return SEMI_COLON;}
 ":="					{return ASSIGN;}
 "("						{return BRACKET_OPEN;}
