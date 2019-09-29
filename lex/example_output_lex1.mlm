@@ -1,0 +1,23 @@
+<BEGIN, begin>
+
+   <IDENTIFIER, b> <COLON, :> <TYPE, boolean>
+
+   <IDENTIFIER, x> <COLON, :> <TYPE, real>
+
+
+   <IDENTIFIER, b> <ASSIGN, :=> <BOOLEAN_CONSTANT, true>
+
+   <IDENTIFIER, x> <ASSIGN, :=> <REAL_CONSTANT, 0.5E-1>
+
+   <IF, if> <IDENTIFIER, x> <MULOP, *> <INTEGER_CONSTANT, 3>  <RELOP, >> <INTEGER_CONSTANT, 1> <THEN, then>
+      <IDENTIFIER, x> <ASSIGN, :=> <IDENTIFIER, x> <MULOP, *> <INTEGER_CONSTANT, 3>
+
+
+   <WHILE, while> <IDENTIFIER, b> <ASSIGN, :=> <BOOLEAN_CONSTANT, true> <DO, do>
+      <IDENTIFIER, x> <ASSIGN, :=> <IDENTIFIER, x> <ADDOP, -> <INTEGER_CONSTANT, 1>
+
+      <IF, if> <IDENTIFIER, x> <RELOP, <> <INTEGER_CONSTANT, 2> <THEN, then>
+         <IDENTIFIER, b> <ASSIGN, :=> <BOOLEAN_CONSTANT, false>
+   <END, end>
+
+<END, end>

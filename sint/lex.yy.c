@@ -360,8 +360,8 @@ static void yy_fatal_error (yyconst char msg[]  );
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 37
-#define YY_END_OF_BUFFER 38
+#define YY_NUM_RULES 38
+#define YY_END_OF_BUFFER 39
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -371,19 +371,19 @@ struct yy_trans_info
 	};
 static yyconst flex_int16_t yy_accept[116] =
     {   0,
-        0,    0,   38,   36,   35,   34,   36,   19,   23,   24,
-        3,    1,   20,   29,   36,   21,    2,    2,    2,   33,
-       33,   27,   28,   33,   33,   33,   33,   33,   33,   33,
-       33,   33,   33,   33,   33,   33,   33,   25,   26,    2,
-        0,   30,   29,    0,   22,   33,   33,   33,   33,   33,
-       33,   33,   14,   33,   33,   33,   11,   33,   33,    1,
-       33,   33,   33,   33,   33,   33,   33,   31,   30,    0,
-       30,    2,    3,   33,   33,   33,   33,   16,   33,   33,
-       33,   33,   33,   33,   33,   33,   33,   33,   33,    7,
-       13,   33,   33,   33,    9,    6,   12,   32,   33,   33,
+        0,    0,   39,   37,   36,   35,   37,   19,   24,   25,
+        3,    1,   20,   30,   22,   21,    2,    2,    2,   34,
+       34,   28,   29,   34,   34,   34,   34,   34,   34,   34,
+       34,   34,   34,   34,   34,   34,   34,   26,   27,    2,
+        0,   31,   30,    0,   23,   34,   34,   34,   34,   34,
+       34,   34,   14,   34,   34,   34,   11,   34,   34,    1,
+       34,   34,   34,   34,   34,   34,   34,   32,   31,    0,
+       31,    2,    3,   34,   34,   34,   34,   16,   34,   34,
+       34,   34,   34,   34,   34,   34,   34,   34,   34,    7,
+       13,   34,   34,   34,    9,    6,   12,   33,   34,   34,
 
-       33,   15,   33,   33,   33,   18,   17,   10,   33,   33,
-       33,    8,    5,    4,    0
+       34,   15,   34,   34,   34,   18,   17,   10,   34,   34,
+       34,    8,    5,    4,    0
     } ;
 
 static yyconst flex_int32_t yy_ec[256] =
@@ -911,85 +911,90 @@ YY_RULE_SETUP
 case 22:
 YY_RULE_SETUP
 #line 59 "lex.l"
-{return ASSIGN;}
+{return COLON;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
 #line 60 "lex.l"
-{return BRACKET_OPEN;}
+{return ASSIGN;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
 #line 61 "lex.l"
-{return BRACKET_CLOSE;}
+{return BRACKET_OPEN;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
 #line 62 "lex.l"
-{return CURLY_BRACE_OPEN;}
+{return BRACKET_CLOSE;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
 #line 63 "lex.l"
-{return CURLY_BRACE_CLOSE;}
+{return CURLY_BRACE_OPEN;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
 #line 64 "lex.l"
-{return BIG_BRACKET_OPEN;}
+{return CURLY_BRACE_CLOSE;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
 #line 65 "lex.l"
-{return BIG_BRACKET_CLOSE;}
+{return BIG_BRACKET_OPEN;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 67 "lex.l"
-{yylval.intVal = atoi(yytext); return INTEGER_C;}
+#line 66 "lex.l"
+{return BIG_BRACKET_CLOSE;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
 #line 68 "lex.l"
-{yylval.realVal = atof(yytext); return REAL_C;}
+{yylval.intVal = atoi(yytext); return INTEGER_C;}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
 #line 69 "lex.l"
-{yylval.charVal = yytext[1]; return CHAR_C;}
+{yylval.realVal = atof(yytext); return REAL_C;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
 #line 70 "lex.l"
-{yylval.strVal = strdup(yytext); return BOOL_C;}
+{yylval.charVal = yytext[1]; return CHAR_C;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
 #line 71 "lex.l"
-{yylval.strVal = strdup(yytext); return IDENTIFIER;}
+{yylval.strVal = strdup(yytext); return BOOL_C;}
 	YY_BREAK
 case 34:
-/* rule 34 can match eol */
 YY_RULE_SETUP
-#line 73 "lex.l"
-{yylineno++;}
+#line 72 "lex.l"
+{yylval.strVal = strdup(yytext); return IDENTIFIER;}
 	YY_BREAK
 case 35:
+/* rule 35 can match eol */
 YY_RULE_SETUP
 #line 74 "lex.l"
-;
+{yylineno++;}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
 #line 75 "lex.l"
-{yyerror(yytext);}
+;
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 77 "lex.l"
+#line 76 "lex.l"
+{yyerror(yytext);}
+	YY_BREAK
+case 38:
+YY_RULE_SETUP
+#line 78 "lex.l"
 ECHO;
 	YY_BREAK
-#line 993 "lex.yy.c"
+#line 998 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1949,7 +1954,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 77 "lex.l"
+#line 78 "lex.l"
 
 
 

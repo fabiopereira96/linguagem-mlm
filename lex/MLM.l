@@ -30,26 +30,34 @@ integer_constant	{unsigned_integer}
 real_constant		{unsigned_real}
 
 %%
-{assign}				{printf("ASSIGN ");}
-{addop}         		{printf("ADDOP ");}
-{relop}         		{printf("RELOP ");}
-{mulop}         		{printf("MULOP ");}
-{type}          		{printf("TYPE ");}
-{if}    				{printf("IF ");}
-{else}    				{printf("ELSE ");}
-{then}    				{printf("THEN ");}
-{while}    				{printf("WHILE ");}
-{begin}    				{printf("BEGIN ");}
-{until}    				{printf("UNTIL ");}
-{end}    				{printf("END ");}
-{do}    				{printf("DO ");}
-{boolean_constant}		{printf("BOOLEAN_CONSTANT ");}
-{integer_constant}    	{printf("INTEGER_CONSTANT ");}
-{real_constant}	    	{printf("REAL_CONSTANT ");}
-{char_constant}    		{printf("CHAR_CONSTANT ");}
-{identifier}    		{printf("IDENTIFIER ");}
+{assign}				{printf ("<%s, %s>\n", "ASSIGN", yytext);}
+{addop}         		{printf ("<%s, %s>\n", "ADDOP", yytext);}
+{relop}         		{printf ("<%s, %s>\n", "RELOP", yytext);}
+{mulop}         		{printf ("<%s, %s>\n", "MULOP", yytext);}
+{type}          		{printf ("<%s, %s>\n", "TYPE", yytext);}
+{if}    				{printf ("<%s, %s>\n", "IF", yytext);}
+{else}    				{printf ("<%s, %s>\n", "ELSE", yytext);}
+{then}    				{printf ("<%s, %s>\n", "THEN", yytext);}
+{while}    				{printf ("<%s, %s>\n", "WHILE", yytext);}
+{begin}    				{printf ("<%s, %s>\n", "BEGIN", yytext);}
+{until}    				{printf ("<%s, %s>\n", "UNTIL", yytext);}
+{end}    				{printf ("<%s, %s>\n", "END", yytext);}
+{do}    				{printf ("<%s, %s>\n", "DO", yytext);}
+{boolean_constant}		{printf ("<%s, %s>\n", "BOOLEAN_CONSTANT", yytext);}
+{integer_constant}    	{printf ("<%s, %s>\n", "INTEGER_CONSTANT", yytext);}
+{real_constant}	    	{printf ("<%s, %s>\n", "REAL_CONSTANT", yytext);}
+{char_constant}    		{printf ("<%s, %s>\n", "CHAR_CONSTANT", yytext);}
+{identifier}    		{printf ("<%s, %s>\n", "IDENTIFIER", yytext);}
+
+"("                     {printf ("<%s, %s>\n", "LPAREN", yytext);}
+")"                     {printf ("<%s, %s>\n", "RPAREN", yytext);}
+","                     {printf ("<%s, %s>\n", "COMMA", yytext);}
+":"                     {printf ("<%s, %s>\n", "COLON", yytext);}
+";"                     {printf ("<%s, %s>\n", "SEMI", yytext);}
 %%
+
 #include<stdio.h>
+//#define TOKEN_ECHO(symbol) printf ("<%s, %s>\n", symbol, yytext)
 
 int yywrap(){
     return 1;

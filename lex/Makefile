@@ -1,5 +1,5 @@
 all:
-	flex MLM.lex
+	flex MLM.l
 	cc lex.yy.c
 free:
 	rm a.out* lex.yy.c

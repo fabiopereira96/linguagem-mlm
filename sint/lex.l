@@ -56,6 +56,7 @@ boolean_constant	"true"|"false"
 "'"						{return SINGLE_QUOTES;}
 ","						{return COMMA;}
 ";"						{return SEMI_COLON;}
+":"						{return COLON;}
 ":="					{return ASSIGN;}
 "("						{return BRACKET_OPEN;}
 ")"						{return BRACKET_CLOSE;}

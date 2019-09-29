@@ -1447,7 +1447,12 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-        case 34:
+        case 2:
+#line 50 "sint.y"
+    {printf("done\n"); exit(0);}
+    break;
+
+  case 34:
 #line 113 "sint.y"
     {printf("simple_expr\n");}
     break;
@@ -1519,7 +1524,7 @@ yyreduce:
 
 
 /* Line 1267 of yacc.c.  */
-#line 1523 "y.tab.c"
+#line 1528 "y.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);

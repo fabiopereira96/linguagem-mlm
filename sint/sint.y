@@ -47,7 +47,7 @@
 /* Rule Section */
 %%
 
-program  :  PROGRAM IDENTIFIER SEMI_COLON decl_list compound_stmt  {printf("done\n"); exit(0);}
+program  :  PROGRAM IDENTIFIER SEMI_COLON decl_list compound_stmt {printf("done\n"); exit(0);}
 		 ;
 
 decl_list  :  decl_list SEMI_COLON decl
