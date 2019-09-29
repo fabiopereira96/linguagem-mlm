@@ -1,2 +1,7 @@
-program teste;
-teste: integer;
+program SOMA2;
+valueA, valueB, sumAB: integer
+begin
+        valueA := 10;
+        valueB := 20;
+        sumAB := valueA + valueB
+end

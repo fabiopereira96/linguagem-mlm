@@ -1,0 +1,14 @@
+program SOMA2;
+x: real;
+b: boolean
+begin
+        b := true;
+        x := 0.5E-1;
+
+        if x * 3 > 1 then x := x * 3
+
+        while b := true do
+            x := x-1
+            if x < 2 then b := false
+        end
+end
