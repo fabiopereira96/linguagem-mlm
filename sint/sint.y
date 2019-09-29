@@ -29,8 +29,6 @@
 %token <strVal> READ
 %token <strVal> WRITE
 %token <strVal> IF
-%token <strVal> THEN
-%token <strVal> ELSE
 %token <strVal> DO
 %token <strVal> BEGIN_
 %token <strVal> END
@@ -42,6 +40,9 @@
 %token <realVal> REAL_C
 %token <charVale> CHAR_C
 %token <strVal> BOOL_C
+
+%nonassoc <strVal> THEN
+%nonassoc <strVal> ELSE
 
 /* Rule Section */
 %%

@@ -36,6 +36,7 @@ boolean_constant	"true"|"false"
 {relop}					{yylval.strVal = strdup(yytext); return RELOP;}
 {mulop}					{yylval.strVal = strdup(yytext); return MULOP;}
 
+"program" 				{yylval.strVal = strdup(yytext); return PROGRAM;}
 "integer" 				{yylval.strVal = strdup(yytext); return INTEGER_C;}
 "real"	  				{yylval.strVal = strdup(yytext); return REAL_C;}
 "char"	  				{yylval.strVal = strdup(yytext); return CHAR_C;}

@@ -57,18 +57,18 @@
      READ = 273,
      WRITE = 274,
      IF = 275,
-     THEN = 276,
-     ELSE = 277,
-     DO = 278,
-     BEGIN_ = 279,
-     END = 280,
-     WHILE = 281,
-     UNTIL = 282,
-     IDENTIFIER = 283,
-     INTEGER_C = 284,
-     REAL_C = 285,
-     CHAR_C = 286,
-     BOOL_C = 287
+     DO = 276,
+     BEGIN_ = 277,
+     END = 278,
+     WHILE = 279,
+     UNTIL = 280,
+     IDENTIFIER = 281,
+     INTEGER_C = 282,
+     REAL_C = 283,
+     CHAR_C = 284,
+     BOOL_C = 285,
+     THEN = 286,
+     ELSE = 287
    };
 #endif
 /* Tokens.  */
@@ -90,18 +90,18 @@
 #define READ 273
 #define WRITE 274
 #define IF 275
-#define THEN 276
-#define ELSE 277
-#define DO 278
-#define BEGIN_ 279
-#define END 280
-#define WHILE 281
-#define UNTIL 282
-#define IDENTIFIER 283
-#define INTEGER_C 284
-#define REAL_C 285
-#define CHAR_C 286
-#define BOOL_C 287
+#define DO 276
+#define BEGIN_ 277
+#define END 278
+#define WHILE 279
+#define UNTIL 280
+#define IDENTIFIER 281
+#define INTEGER_C 282
+#define REAL_C 283
+#define CHAR_C 284
+#define BOOL_C 285
+#define THEN 286
+#define ELSE 287
 
 
 

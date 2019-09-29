@@ -1,3 +1,2 @@
-begin
-    if x * 3 > 1 then x := x * 3
-end
+program teste1
+teste = 2
