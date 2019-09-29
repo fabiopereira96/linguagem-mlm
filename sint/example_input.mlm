@@ -1,0 +1,3 @@
+begin
+    if x * 3 > 1 then x := x * 3
+end

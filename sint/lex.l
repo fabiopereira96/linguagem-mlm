@@ -36,10 +36,10 @@ boolean_constant	"true"|"false"
 {relop}					{yylval.strVal = strdup(yytext); return RELOP;}
 {mulop}					{yylval.strVal = strdup(yytext); return MULOP;}
 
-"integer" |
-"real"	  |
-"char"	  |
-"boolean" 				{yylval.strVal = strdup(yytext); return TYPE;}
+"integer" 				{yylval.strVal = strdup(yytext); return INTEGER_C;}
+"real"	  				{yylval.strVal = strdup(yytext); return REAL_C;}
+"char"	  				{yylval.strVal = strdup(yytext); return CHAR_C;}
+"boolean" 				{yylval.strVal = strdup(yytext); return BOOL_C;}
 
 "read"					{yylval.strVal = strdup(yytext); return READ;}
 "write"					{yylval.strVal = strdup(yytext); return WRITE;}
@@ -47,14 +47,13 @@ boolean_constant	"true"|"false"
 "then"					{yylval.strVal = strdup(yytext); return THEN;}
 "else"					{yylval.strVal = strdup(yytext); return ELSE;}
 "do"					{yylval.strVal = strdup(yytext); return DO;}
-"begin"					{yylval.strVal = strdup(yytext); return BEGIN;}
+"begin"					{yylval.strVal = strdup(yytext); return BEGIN_;}
 "end"					{yylval.strVal = strdup(yytext); return END;}
 "while"					{yylval.strVal = strdup(yytext); return WHILE;}
 "until"					{yylval.strVal = strdup(yytext); return UNTIL;}
 
 "'"						{return SINGLE_QUOTES;}
 ","						{return COMMA;}
-";"						{return COLON;}
 ";"						{return SEMI_COLON;}
 ":="					{return ASSIGN;}
 "("						{return BRACKET_OPEN;}

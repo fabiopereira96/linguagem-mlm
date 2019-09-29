@@ -6,6 +6,7 @@
 
 	extern void yyerror();
 	extern int yylineno;
+	extern int yylex();
 %}
 
 %union {
@@ -16,8 +17,10 @@
   char charVal;
 }
 
+%token PROGRAM
 %token  COMMA   SINGLE_QUOTES   SEMI_COLON   ASSIGN 
 %token  BRACKET_OPEN  BRACKET_CLOSE   CURLY_BRACE_OPEN  CURLY_BRACE_CLOSE BIG_BRACKET_OPEN  BIG_BRACKET_CLOSE
+%token COLON
 
 %token <strVal> ADDOP
 %token <strVal> RELOP
@@ -29,7 +32,7 @@
 %token <strVal> THEN
 %token <strVal> ELSE
 %token <strVal> DO
-%token <strVal> BEGIN
+%token <strVal> BEGIN_
 %token <strVal> END
 %token <strVal> WHILE
 %token <strVal> UNTIL
@@ -50,20 +53,25 @@ decl_list  :  decl_list SEMI_COLON decl
 		   |  decl
 		   ;
 
-decl  :  ident_list COLON TYPE
+decl  :  ident_list COLON type
+
+type            : INTEGER_C
+                | REAL_C
+                | BOOL_C
+                | CHAR_C ;
 
 ident_list  :  ident_list COMMA IDENTIFIER
 			|  IDENTIFIER
 			;
 
-compount_stmt  :  BEGIN stmt_list END
+compound_stmt  :  BEGIN_ stmt_list END
 			   ;
 
 stmt_list  :  stmt_list SEMI_COLON stmt
 		   |  stmt
 		   ;
 
-stmt  :  assignt_stmt
+stmt  :  assign_stmt
 	  |  if_stmt
 	  |  loop_stmt
 	  |  read_stmt
@@ -71,8 +79,7 @@ stmt  :  assignt_stmt
 	  |  compound_stmt
 	  ;
 
-assign_stmt  :  IDENTIFIER ASSIGN expr
-			 ;
+assign_stmt  :  IDENTIFIER ASSIGN expr;
 
 if_stmt  :  IF cond THEN stmt
 		 |  IF cond THEN stmt ELSE stmt
@@ -131,7 +138,7 @@ constant  :  INTEGER_C	{printf("integer_constant\n");}
 %%
 
 //driver code
-main()
+int main()
 {
 	yyparse();
 	printf("Acceptd\n");
