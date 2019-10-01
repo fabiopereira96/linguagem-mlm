@@ -47,93 +47,95 @@
 /* Rule Section */
 %%
 
-program  :  PROGRAM IDENTIFIER SEMI_COLON decl_list compound_stmt {printf("done\n"); exit(0);}
+program  :  PROGRAM IDENTIFIER SEMI_COLON decl_list compound_stmt {printf("program\n");}
 		 ;
 
-decl_list  :  decl_list SEMI_COLON decl
-		   |  decl
+decl_list  :  decl_list SEMI_COLON decl 	{printf("decl_list\n");}
+		   |  decl 	{printf("decl_list\n");}
 		   ;
 
-decl  :  ident_list COLON type
+decl  :  ident_list COLON type	{printf("decl\n");}
 
-type            : INTEGER_C
-                | REAL_C
-                | BOOL_C
-                | CHAR_C ;
+type  : INTEGER_C	{printf("type\n");}
+      | REAL_C	{printf("type\n");}
+      | BOOL_C	{printf("type\n");}
+      | CHAR_C	{printf("type\n");}
+      ;
 
-ident_list  :  ident_list COMMA IDENTIFIER
-			|  IDENTIFIER
+ident_list  :  ident_list COMMA IDENTIFIER	{printf("ident_list\n");}
+			|  IDENTIFIER	{printf("ident_list\n");}
 			;
 
-compound_stmt  :  BEGIN_ stmt_list END
+compound_stmt  :  BEGIN_ stmt_list END	{printf("compound_stmt\n");}
 			   ;
 
-stmt_list  :  stmt_list SEMI_COLON stmt
-		   |  stmt
+stmt_list  :  stmt_list SEMI_COLON stmt	{printf("stmt_list\n");}
+		   |  stmt 	{printf("stmt_list\n");}
 		   ;
 
-stmt  :  assign_stmt
-	  |  if_stmt
-	  |  loop_stmt
-	  |  read_stmt
-	  |  write_stmt
-	  |  compound_stmt
+stmt  :  assign_stmt	{printf("stmt\n");}
+	  |  if_stmt	{printf("stmt\n");}
+	  |  loop_stmt	{printf("stmt\n");}
+	  |  read_stmt	{printf("stmt\n");}
+	  |  write_stmt	{printf("stmt\n");}
+	  |  compound_stmt	{printf("stmt\n");}
 	  ;
 
-assign_stmt  :  IDENTIFIER ASSIGN expr;
+assign_stmt  :  IDENTIFIER ASSIGN expr	{printf("assign_stmt\n");}
+			 ;
 
-if_stmt  :  IF cond THEN stmt
-		 |  IF cond THEN stmt ELSE stmt
+if_stmt  :  IF cond THEN stmt	{printf("if_stmt\n");}
+		 |  IF cond THEN stmt ELSE stmt 	{printf("if_stmt\n");}
 		 ;
 
-cond  :  expr
+cond  :  expr {printf("cond\n");}
 	  ;
 
-loop_stmt  :  stmt_prefix DO stmt_list stmt_suffix
+loop_stmt  :  stmt_prefix DO stmt_list stmt_suffix	{printf("loop_stmt\n");}
 		   ;
 
-stmt_prefix  :  WHILE cond
-			 |  /* empty */
+stmt_prefix  :  WHILE cond	{printf("stmt_prefix\n");}
+			 |  /* empty */	{printf("stmt_prefix\n");}
 			 ;
 
-stmt_suffix  :  UNTIL cond
-			 |  END
+stmt_suffix  :  UNTIL cond	{printf("stmt_suffix\n");}
+			 |  END	{printf("stmt_suffix\n");}
 			 ;
 
-read_stmt  :  READ BRACKET_OPEN ident_list BRACKET_CLOSE
+read_stmt  :  READ BRACKET_OPEN ident_list BRACKET_CLOSE	{printf("read_stmt\n");}
 		   ;
 
-write_stmt  :  WRITE BRACKET_OPEN expr_list BRACKET_CLOSE
+write_stmt  :  WRITE BRACKET_OPEN expr_list BRACKET_CLOSE	{printf("write_stmt\n");}
 			;
 
-expr_list  :  expr
-		   |  expr_list COMMA expr
+expr_list  :  expr	{printf("expr_list\n");}
+		   |  expr_list COMMA expr	{printf("expr_list\n");}
 		   ;
 
-expr  :  simple_expr	{printf("simple_expr\n");}
-	  |  simple_expr RELOP simple_expr	{printf("simple_expr RELOP simple_expr\n");}
+expr  :  simple_expr	{printf("expr\n");}
+	  |  simple_expr RELOP simple_expr	{printf("expr\n");}
 	  ;
 
-simple_expr  :  term	{printf("term\n");}
-			 |  simple_expr ADDOP term	{printf("simple_expr ADDOP term\n");}
+simple_expr  :  term	{printf("simple_expr\n");}
+			 |  simple_expr ADDOP term	{printf("simple_expr\n");}
 			 ;
 
-term  :  factor_a	{printf("factor_a\n");}
- 	  |  term MULOP factor_a	{printf("term MULOP factor_a\n");}
+term  :  factor_a	{printf("term\n");}
+ 	  |  term MULOP factor_a	{printf("term\n");}
  	  ;
 
-factor_a  :  factor 	{printf("factor\n");}
+factor_a  :  factor 	{printf("factor_a\n");}
 		  ;
 
-factor 	:  IDENTIFIER  	{printf("identifier\n");}
- 		|  constant		{printf("constant\n");}
- 		|  BRACKET_OPEN expr BRACKET_CLOSE {printf("(expr)\n");}
+factor 	:  IDENTIFIER  	{printf("factor\n");}
+ 		|  constant		{printf("factor\n");}
+ 		|  BRACKET_OPEN expr BRACKET_CLOSE {printf("(factor)\n");}
 		;
 
-constant  :  INTEGER_C	{printf("integer_constant\n");}
-		  |  REAL_C		{printf("real_constant\n");}
-		  |  CHAR_C		{printf("char_constant\n");}
-		  |  BOOL_C		{printf("bool_constant\n");}
+constant  :  INTEGER_C	{printf("constant\n");}
+		  |  REAL_C		{printf("constant\n");}
+		  |  CHAR_C		{printf("constant\n");}
+		  |  BOOL_C		{printf("constant\n");}
 		  ;
 
 %%
