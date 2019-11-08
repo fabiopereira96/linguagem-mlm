@@ -8,15 +8,26 @@
 	extern void yyerror();
 	extern int yylineno;
 	extern int yylex();
+
+	char* ftoa(float number);
+	char* itoa(int number);
+	char* ctoa(char number);
 %}
 
 %union {
   int intVal;
-  char* dataType;
-  char* strVal;
   float realVal;
+  char* strVal;
   char charVal;
+  short boolVal;
 }
+
+%type <strVal> expr
+%type <strVal> simple_expr
+%type <strVal> term
+%type <strVal> factor_a
+%type <strVal> factor
+%type <strVal> constant
 
 %token PROGRAM
 %token  COMMA   SINGLE_QUOTES   SEMI_COLON   ASSIGN 
@@ -39,7 +50,7 @@
 %token <strVal> IDENTIFIER
 %token <intVal> INTEGER_C
 %token <realVal> REAL_C
-%token <charVale> CHAR_C
+%token <charVal> CHAR_C
 %token <strVal> BOOL_C
 
 %nonassoc <strVal> THEN
@@ -48,98 +59,116 @@
 /* Rule Section */
 %%
 
-program  :  PROGRAM IDENTIFIER SEMI_COLON decl_list compound_stmt {printf("program\n");}
+program  :  PROGRAM IDENTIFIER SEMI_COLON decl_list compound_stmt {;}
 		 ;
 
-decl_list  :  decl_list SEMI_COLON decl 	{printf("decl_list\n");}
-		   |  decl 	{printf("decl_list\n");}
+decl_list  :  decl_list SEMI_COLON decl 	{;}
+		   |  decl 	{;}
 		   ;
 
-decl  :  ident_list COLON type	{printf("decl\n");}
+decl  :  ident_list COLON type	{;}
 
-type  : INTEGER_C	{printf("type\n");}
-      | REAL_C	{printf("type\n");}
-      | BOOL_C	{printf("type\n");}
-      | CHAR_C	{printf("type\n");}
+type  : INTEGER_C	{;}
+      | REAL_C	{;}
+      | BOOL_C	{;}
+      | CHAR_C	{;}
       ;
 
-ident_list  :  ident_list COMMA IDENTIFIER	{printf("ident_list\n");}
-			|  IDENTIFIER	{printf("ident_list\n");}
+ident_list  :  ident_list COMMA IDENTIFIER	{;}
+			|  IDENTIFIER	{;}
 			;
 
-compound_stmt  :  BEGIN_ stmt_list END	{printf("compound_stmt\n");}
+compound_stmt  :  BEGIN_ stmt_list END	{;}
 			   ;
 
-stmt_list  :  stmt_list SEMI_COLON stmt	{printf("stmt_list\n");}
-		   |  stmt 	{printf("stmt_list\n");}
+stmt_list  :  stmt_list SEMI_COLON stmt	{;}
+		   |  stmt 	{;}
 		   ;
 
-stmt  :  assign_stmt	{printf("stmt\n");}
-	  |  if_stmt	{printf("stmt\n");}
-	  |  loop_stmt	{printf("stmt\n");}
-	  |  read_stmt	{printf("stmt\n");}
-	  |  write_stmt	{printf("stmt\n");}
-	  |  compound_stmt	{printf("stmt\n");}
+stmt  :  assign_stmt	{;}
+	  |  if_stmt	{;}
+	  |  loop_stmt	{;}
+	  |  read_stmt	{;}
+	  |  write_stmt	{;}
+	  |  compound_stmt	{;}
 	  ;
 
-assign_stmt  :  IDENTIFIER ASSIGN expr	{printf("assign_stmt\n");}
+assign_stmt  :  IDENTIFIER ASSIGN expr	{Instala($1, $3);}
 			 ;
 
-if_stmt  :  IF cond THEN stmt	{printf("if_stmt\n");}
-		 |  IF cond THEN stmt ELSE stmt 	{printf("if_stmt\n");}
+if_stmt  :  IF cond THEN stmt	{;}
+		 |  IF cond THEN stmt ELSE stmt 	{;}
 		 ;
 
-cond  :  expr {printf("cond\n");}
+cond  :  expr {;}
 	  ;
 
-loop_stmt  :  stmt_prefix DO stmt_list stmt_suffix	{printf("loop_stmt\n");}
+loop_stmt  :  stmt_prefix DO stmt_list stmt_suffix	{;}
 		   ;
 
-stmt_prefix  :  WHILE cond	{printf("stmt_prefix\n");}
-			 |  /* empty */	{printf("stmt_prefix\n");}
+stmt_prefix  :  WHILE cond	{;}
+			 |  /* empty */	{;}
 			 ;
 
-stmt_suffix  :  UNTIL cond	{printf("stmt_suffix\n");}
-			 |  END	{printf("stmt_suffix\n");}
+stmt_suffix  :  UNTIL cond	{;}
+			 |  END	{;}
 			 ;
 
-read_stmt  :  READ BRACKET_OPEN ident_list BRACKET_CLOSE	{printf("read_stmt\n");}
+read_stmt  :  READ BRACKET_OPEN ident_list BRACKET_CLOSE	{;}
 		   ;
 
-write_stmt  :  WRITE BRACKET_OPEN expr_list BRACKET_CLOSE	{printf("write_stmt\n");}
+write_stmt  :  WRITE BRACKET_OPEN expr_list BRACKET_CLOSE	{;}
 			;
 
-expr_list  :  expr	{printf("expr_list\n");}
-		   |  expr_list COMMA expr	{printf("expr_list\n");}
+expr_list  :  expr	{;}
+		   |  expr_list COMMA expr	{;}
 		   ;
 
-expr  :  simple_expr	{printf("expr\n");}
-	  |  simple_expr RELOP simple_expr	{printf("expr\n");}
+expr  :  simple_expr	{$$ = $1;}
+	  |  simple_expr RELOP simple_expr	{;}
 	  ;
 
-simple_expr  :  term	{printf("simple_expr\n");}
-			 |  simple_expr ADDOP term	{printf("simple_expr\n");}
+simple_expr  :  term	{$$ = $1;}
+			 |  simple_expr ADDOP term	{$$ = ftoa(atof($1) + atof($3));}
 			 ;
 
-term  :  factor_a	{printf("term\n");}
- 	  |  term MULOP factor_a	{printf("term\n");}
+term  :  factor_a	{$$ = $1;}
+ 	  |  term MULOP factor_a	{$$ = ftoa(atof($1) * atof($3));}
  	  ;
 
-factor_a  :  factor 	{printf("factor_a\n");}
+factor_a  :  factor 	{$$ = $1;}
 		  ;
 
-factor 	:  IDENTIFIER  	{printf("factor\n");}
- 		|  constant		{printf("factor\n");}
- 		|  BRACKET_OPEN expr BRACKET_CLOSE {printf("(factor)\n");}
+factor 	:  IDENTIFIER  	{int index = Get_Entry($1); /*if (!index) return 0*/; $$ = TabelaS[index].atributo;}
+ 		|  constant		{$$ = $1;}
+ 		|  BRACKET_OPEN expr BRACKET_CLOSE {$$ = $2;}
 		;
 
-constant  :  INTEGER_C	{printf("constant\n");}
-		  |  REAL_C		{printf("constant\n");}
-		  |  CHAR_C		{printf("constant\n");}
-		  |  BOOL_C		{printf("constant\n");}
+constant  :  INTEGER_C	{$$ = itoa($1);}
+		  |  REAL_C		{$$ = ftoa($1);}
+		  |  CHAR_C		{$$ = ctoa($1);}
+		  |  BOOL_C		{$$ = $1;}
 		  ;
 
 %%
+
+char* ftoa(float number){
+	static char buffer[33];
+	snprintf(buffer, sizeof(buffer), "%f", number);
+	return buffer;
+}
+
+char* itoa(int number){
+	static char buffer[33];
+	snprintf(buffer, sizeof(buffer), "%d", number);
+	return buffer;
+}
+
+char* ctoa(char number){
+	static char buffer[33];
+	snprintf(buffer, sizeof(buffer), "%c", number);
+	return buffer;
+}
 
 //driver code
 int main()
@@ -151,5 +180,6 @@ int main()
 
 	yyparse();
 	printf("Acceptd\n");
+	imprimir();
 	return 0;
 }

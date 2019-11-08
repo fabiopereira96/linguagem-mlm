@@ -114,13 +114,13 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 13 "sint.y" /* yacc.c:1909  */
+#line 17 "sint.y" /* yacc.c:1909  */
 
   int intVal;
-  char* dataType;
-  char* strVal;
   float realVal;
+  char* strVal;
   char charVal;
+  short boolVal;
 
 #line 126 "y.tab.h" /* yacc.c:1909  */
 };

@@ -73,7 +73,11 @@
 	extern int yylineno;
 	extern int yylex();
 
-#line 77 "y.tab.c" /* yacc.c:339  */
+	char* ftoa(float number);
+	char* itoa(int number);
+	char* ctoa(char number);
+
+#line 81 "y.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -177,15 +181,15 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 13 "sint.y" /* yacc.c:355  */
+#line 17 "sint.y" /* yacc.c:355  */
 
   int intVal;
-  char* dataType;
-  char* strVal;
   float realVal;
+  char* strVal;
   char charVal;
+  short boolVal;
 
-#line 189 "y.tab.c" /* yacc.c:355  */
+#line 193 "y.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -202,7 +206,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 206 "y.tab.c" /* yacc.c:358  */
+#line 210 "y.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -502,11 +506,11 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    51,    51,    54,    55,    58,    60,    61,    62,    63,
-      66,    67,    70,    73,    74,    77,    78,    79,    80,    81,
-      82,    85,    88,    89,    92,    95,    98,    99,   102,   103,
-     106,   109,   112,   113,   116,   117,   120,   121,   124,   125,
-     128,   131,   132,   133,   136,   137,   138,   139
+       0,    62,    62,    65,    66,    69,    71,    72,    73,    74,
+      77,    78,    81,    84,    85,    88,    89,    90,    91,    92,
+      93,    96,    99,   100,   103,   106,   109,   110,   113,   114,
+     117,   120,   123,   124,   127,   128,   131,   132,   135,   136,
+     139,   142,   143,   144,   147,   148,   149,   150
 };
 #endif
 
@@ -1331,283 +1335,283 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 51 "sint.y" /* yacc.c:1646  */
-    {printf("program\n");}
-#line 1337 "y.tab.c" /* yacc.c:1646  */
+#line 62 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1341 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 3:
-#line 54 "sint.y" /* yacc.c:1646  */
-    {printf("decl_list\n");}
-#line 1343 "y.tab.c" /* yacc.c:1646  */
+#line 65 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1347 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 4:
-#line 55 "sint.y" /* yacc.c:1646  */
-    {printf("decl_list\n");}
-#line 1349 "y.tab.c" /* yacc.c:1646  */
+#line 66 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1353 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 58 "sint.y" /* yacc.c:1646  */
-    {printf("decl\n");}
-#line 1355 "y.tab.c" /* yacc.c:1646  */
+#line 69 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1359 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 60 "sint.y" /* yacc.c:1646  */
-    {printf("type\n");}
-#line 1361 "y.tab.c" /* yacc.c:1646  */
+#line 71 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1365 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 61 "sint.y" /* yacc.c:1646  */
-    {printf("type\n");}
-#line 1367 "y.tab.c" /* yacc.c:1646  */
+#line 72 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1371 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 62 "sint.y" /* yacc.c:1646  */
-    {printf("type\n");}
-#line 1373 "y.tab.c" /* yacc.c:1646  */
+#line 73 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1377 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 63 "sint.y" /* yacc.c:1646  */
-    {printf("type\n");}
-#line 1379 "y.tab.c" /* yacc.c:1646  */
+#line 74 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1383 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 66 "sint.y" /* yacc.c:1646  */
-    {printf("ident_list\n");}
-#line 1385 "y.tab.c" /* yacc.c:1646  */
+#line 77 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1389 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
-#line 67 "sint.y" /* yacc.c:1646  */
-    {printf("ident_list\n");}
-#line 1391 "y.tab.c" /* yacc.c:1646  */
+#line 78 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1395 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 70 "sint.y" /* yacc.c:1646  */
-    {printf("compound_stmt\n");}
-#line 1397 "y.tab.c" /* yacc.c:1646  */
+#line 81 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1401 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 73 "sint.y" /* yacc.c:1646  */
-    {printf("stmt_list\n");}
-#line 1403 "y.tab.c" /* yacc.c:1646  */
+#line 84 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1407 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 74 "sint.y" /* yacc.c:1646  */
-    {printf("stmt_list\n");}
-#line 1409 "y.tab.c" /* yacc.c:1646  */
+#line 85 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1413 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 77 "sint.y" /* yacc.c:1646  */
-    {printf("stmt\n");}
-#line 1415 "y.tab.c" /* yacc.c:1646  */
+#line 88 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1419 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 78 "sint.y" /* yacc.c:1646  */
-    {printf("stmt\n");}
-#line 1421 "y.tab.c" /* yacc.c:1646  */
+#line 89 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1425 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 79 "sint.y" /* yacc.c:1646  */
-    {printf("stmt\n");}
-#line 1427 "y.tab.c" /* yacc.c:1646  */
+#line 90 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1431 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 80 "sint.y" /* yacc.c:1646  */
-    {printf("stmt\n");}
-#line 1433 "y.tab.c" /* yacc.c:1646  */
+#line 91 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1437 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 81 "sint.y" /* yacc.c:1646  */
-    {printf("stmt\n");}
-#line 1439 "y.tab.c" /* yacc.c:1646  */
+#line 92 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1443 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 20:
-#line 82 "sint.y" /* yacc.c:1646  */
-    {printf("stmt\n");}
-#line 1445 "y.tab.c" /* yacc.c:1646  */
+#line 93 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1449 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 85 "sint.y" /* yacc.c:1646  */
-    {printf("assign_stmt\n");}
-#line 1451 "y.tab.c" /* yacc.c:1646  */
+#line 96 "sint.y" /* yacc.c:1646  */
+    {Instala((yyvsp[-2].strVal), (yyvsp[0].strVal));}
+#line 1455 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 88 "sint.y" /* yacc.c:1646  */
-    {printf("if_stmt\n");}
-#line 1457 "y.tab.c" /* yacc.c:1646  */
+#line 99 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1461 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 89 "sint.y" /* yacc.c:1646  */
-    {printf("if_stmt\n");}
-#line 1463 "y.tab.c" /* yacc.c:1646  */
+#line 100 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1467 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 92 "sint.y" /* yacc.c:1646  */
-    {printf("cond\n");}
-#line 1469 "y.tab.c" /* yacc.c:1646  */
+#line 103 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1473 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 25:
-#line 95 "sint.y" /* yacc.c:1646  */
-    {printf("loop_stmt\n");}
-#line 1475 "y.tab.c" /* yacc.c:1646  */
+#line 106 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1479 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 98 "sint.y" /* yacc.c:1646  */
-    {printf("stmt_prefix\n");}
-#line 1481 "y.tab.c" /* yacc.c:1646  */
+#line 109 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1485 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 99 "sint.y" /* yacc.c:1646  */
-    {printf("stmt_prefix\n");}
-#line 1487 "y.tab.c" /* yacc.c:1646  */
+#line 110 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1491 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 28:
-#line 102 "sint.y" /* yacc.c:1646  */
-    {printf("stmt_suffix\n");}
-#line 1493 "y.tab.c" /* yacc.c:1646  */
+#line 113 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1497 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 29:
-#line 103 "sint.y" /* yacc.c:1646  */
-    {printf("stmt_suffix\n");}
-#line 1499 "y.tab.c" /* yacc.c:1646  */
+#line 114 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1503 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 30:
-#line 106 "sint.y" /* yacc.c:1646  */
-    {printf("read_stmt\n");}
-#line 1505 "y.tab.c" /* yacc.c:1646  */
+#line 117 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1509 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 31:
-#line 109 "sint.y" /* yacc.c:1646  */
-    {printf("write_stmt\n");}
-#line 1511 "y.tab.c" /* yacc.c:1646  */
+#line 120 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1515 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 32:
-#line 112 "sint.y" /* yacc.c:1646  */
-    {printf("expr_list\n");}
-#line 1517 "y.tab.c" /* yacc.c:1646  */
+#line 123 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1521 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 33:
-#line 113 "sint.y" /* yacc.c:1646  */
-    {printf("expr_list\n");}
-#line 1523 "y.tab.c" /* yacc.c:1646  */
+#line 124 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1527 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 34:
-#line 116 "sint.y" /* yacc.c:1646  */
-    {printf("expr\n");}
-#line 1529 "y.tab.c" /* yacc.c:1646  */
+#line 127 "sint.y" /* yacc.c:1646  */
+    {(yyval.strVal) = (yyvsp[0].strVal);}
+#line 1533 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 35:
-#line 117 "sint.y" /* yacc.c:1646  */
-    {printf("expr\n");}
-#line 1535 "y.tab.c" /* yacc.c:1646  */
+#line 128 "sint.y" /* yacc.c:1646  */
+    {;}
+#line 1539 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 36:
-#line 120 "sint.y" /* yacc.c:1646  */
-    {printf("simple_expr\n");}
-#line 1541 "y.tab.c" /* yacc.c:1646  */
+#line 131 "sint.y" /* yacc.c:1646  */
+    {(yyval.strVal) = (yyvsp[0].strVal);}
+#line 1545 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 37:
-#line 121 "sint.y" /* yacc.c:1646  */
-    {printf("simple_expr\n");}
-#line 1547 "y.tab.c" /* yacc.c:1646  */
+#line 132 "sint.y" /* yacc.c:1646  */
+    {(yyval.strVal) = ftoa(atof((yyvsp[-2].strVal)) + atof((yyvsp[0].strVal)));}
+#line 1551 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 38:
-#line 124 "sint.y" /* yacc.c:1646  */
-    {printf("term\n");}
-#line 1553 "y.tab.c" /* yacc.c:1646  */
+#line 135 "sint.y" /* yacc.c:1646  */
+    {(yyval.strVal) = (yyvsp[0].strVal);}
+#line 1557 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 39:
-#line 125 "sint.y" /* yacc.c:1646  */
-    {printf("term\n");}
-#line 1559 "y.tab.c" /* yacc.c:1646  */
+#line 136 "sint.y" /* yacc.c:1646  */
+    {(yyval.strVal) = ftoa(atof((yyvsp[-2].strVal)) * atof((yyvsp[0].strVal)));}
+#line 1563 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 40:
-#line 128 "sint.y" /* yacc.c:1646  */
-    {printf("factor_a\n");}
-#line 1565 "y.tab.c" /* yacc.c:1646  */
+#line 139 "sint.y" /* yacc.c:1646  */
+    {(yyval.strVal) = (yyvsp[0].strVal);}
+#line 1569 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 41:
-#line 131 "sint.y" /* yacc.c:1646  */
-    {printf("factor\n");}
-#line 1571 "y.tab.c" /* yacc.c:1646  */
+#line 142 "sint.y" /* yacc.c:1646  */
+    {int index = Get_Entry((yyvsp[0].strVal)); /*if (!index) return 0*/; (yyval.strVal) = TabelaS[index].atributo;}
+#line 1575 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 42:
-#line 132 "sint.y" /* yacc.c:1646  */
-    {printf("factor\n");}
-#line 1577 "y.tab.c" /* yacc.c:1646  */
+#line 143 "sint.y" /* yacc.c:1646  */
+    {(yyval.strVal) = (yyvsp[0].strVal);}
+#line 1581 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 43:
-#line 133 "sint.y" /* yacc.c:1646  */
-    {printf("(factor)\n");}
-#line 1583 "y.tab.c" /* yacc.c:1646  */
+#line 144 "sint.y" /* yacc.c:1646  */
+    {(yyval.strVal) = (yyvsp[-1].strVal);}
+#line 1587 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 44:
-#line 136 "sint.y" /* yacc.c:1646  */
-    {printf("constant\n");}
-#line 1589 "y.tab.c" /* yacc.c:1646  */
+#line 147 "sint.y" /* yacc.c:1646  */
+    {(yyval.strVal) = itoa((yyvsp[0].intVal));}
+#line 1593 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 45:
-#line 137 "sint.y" /* yacc.c:1646  */
-    {printf("constant\n");}
-#line 1595 "y.tab.c" /* yacc.c:1646  */
+#line 148 "sint.y" /* yacc.c:1646  */
+    {(yyval.strVal) = ftoa((yyvsp[0].realVal));}
+#line 1599 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 46:
-#line 138 "sint.y" /* yacc.c:1646  */
-    {printf("constant\n");}
-#line 1601 "y.tab.c" /* yacc.c:1646  */
+#line 149 "sint.y" /* yacc.c:1646  */
+    {(yyval.strVal) = ctoa((yyvsp[0].charVal));}
+#line 1605 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 47:
-#line 139 "sint.y" /* yacc.c:1646  */
-    {printf("constant\n");}
-#line 1607 "y.tab.c" /* yacc.c:1646  */
+#line 150 "sint.y" /* yacc.c:1646  */
+    {(yyval.strVal) = (yyvsp[0].strVal);}
+#line 1611 "y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1611 "y.tab.c" /* yacc.c:1646  */
+#line 1615 "y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1835,8 +1839,26 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 142 "sint.y" /* yacc.c:1906  */
+#line 153 "sint.y" /* yacc.c:1906  */
 
+
+char* ftoa(float number){
+	static char buffer[33];
+	snprintf(buffer, sizeof(buffer), "%f", number);
+	return buffer;
+}
+
+char* itoa(int number){
+	static char buffer[33];
+	snprintf(buffer, sizeof(buffer), "%d", number);
+	return buffer;
+}
+
+char* ctoa(char number){
+	static char buffer[33];
+	snprintf(buffer, sizeof(buffer), "%c", number);
+	return buffer;
+}
 
 //driver code
 int main()
@@ -1848,5 +1870,6 @@ int main()
 
 	yyparse();
 	printf("Acceptd\n");
+	imprimir();
 	return 0;
 }

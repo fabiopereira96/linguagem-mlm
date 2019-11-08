@@ -5,7 +5,7 @@
 #define NMax 10     /* Numero maximo de niveis possiveis */
 
 int escopo[10];
-int TabHash[509];
+int TabHash[100];
 int nivel;    /* inteiro que contem o numero do nivel atual */
 int L;     	/* inteiro que contem o indice do ultimo elemento da Tabela de Simbolos */
 int Raiz;   /* inteiro que contem o indice do primeiro elemento da Tabela de Simbolos */
@@ -17,7 +17,7 @@ struct {
 	int col;
 } TabelaS[100]; /* Vetor de struct que contem a tabela de simbolos */
 
-int Hashing(char *chave[10]);
+int Hashing(char *chave);
 void Entrada_Bloco();
 void Erro(int numero);
 void Saida_Bloco();
@@ -35,7 +35,7 @@ void imprimir();
 
 
 /************  Funcao que calcula o hashing de um simbolo  **********/
-int Hashing(char *chave[10])
+int Hashing(char *chave)
 {
 	int hash = 5381;
 	int i;
@@ -45,7 +45,7 @@ int Hashing(char *chave[10])
 		hash = ((hash << 5) + hash) + (*chave);
 	}
 
-	return hash;
+	return hash % 100;
 }
 
 /************  Funcao que define os erros provaveis de ocorrer  **********/
@@ -100,7 +100,7 @@ int Get_Entry(char x[10])   /* Pesquisa o simbolo "x" e retorna o indice da Tabe
 {
 	int n, aux, achou, k;
 	achou = 0;
-	n = x[0];
+	n = Hashing(x);
 	k = TabHash[n];
 
 	while ((k != 0)&&(achou == 0))
@@ -112,8 +112,8 @@ int Get_Entry(char x[10])   /* Pesquisa o simbolo "x" e retorna o indice da Tabe
 
 	if (achou == 1)
 	{
-		printf("O item esta no nivel  %d", TabelaS[k].nivel);
-		printf("               Indice %u",k);
+		printf("\nO item %s esta no nivel  %d", x, TabelaS[k].nivel);
+		printf("               Indice %u\n",k);
 		return (k);  /* Retorna o indice no vetor TabelaS do elemento procurado*/
 	}
 	else
@@ -129,7 +129,7 @@ void Instala(char X[10], char atribut[10]) /* Instala o simbolo "X" com o atribu
 	int n, igual, k, aux;
 	//clrscr();
 	igual = 0;
-	n = X[0]; /* Calcula o hashing(X)*/
+	n = Hashing(X); /* Calcula o hashing(X)*/
 	k = TabHash[n];
 
 	while (k >= escopo[nivel])
@@ -158,6 +158,8 @@ void Instala(char X[10], char atribut[10]) /* Instala o simbolo "X" com o atribu
 		TabHash[n] = L;
 		L++;
 	}
+
+	//imprimir();
 }
 
 void imprimir()
