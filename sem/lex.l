@@ -37,10 +37,10 @@ boolean_constant	"true"|"false"
 {mulop}					{yylval.strVal = strdup(yytext); return MULOP;}
 
 "program" 				{yylval.strVal = strdup(yytext); return PROGRAM;}
-"integer" 				{yylval.strVal = strdup(yytext); return INTEGER_C;}
-"real"	  				{yylval.strVal = strdup(yytext); return REAL_C;}
-"char"	  				{yylval.strVal = strdup(yytext); return CHAR_C;}
-"boolean" 				{yylval.strVal = strdup(yytext); return BOOL_C;}
+"integer" 				{yylval.strVal = strdup(yytext); return INTEGER_T;}
+"real"	  				{yylval.strVal = strdup(yytext); return REAL_T;}
+"char"	  				{yylval.strVal = strdup(yytext); return CHAR_T;}
+"boolean" 				{yylval.strVal = strdup(yytext); return BOOL_T;}
 
 "read"					{yylval.strVal = strdup(yytext); return READ;}
 "write"					{yylval.strVal = strdup(yytext); return WRITE;}

@@ -73,8 +73,12 @@ extern int yydebug;
     REAL_C = 283,
     CHAR_C = 284,
     BOOL_C = 285,
-    THEN = 286,
-    ELSE = 287
+    INTEGER_T = 286,
+    REAL_T = 287,
+    CHAR_T = 288,
+    BOOL_T = 289,
+    THEN = 290,
+    ELSE = 291
   };
 #endif
 /* Tokens.  */
@@ -106,8 +110,12 @@ extern int yydebug;
 #define REAL_C 283
 #define CHAR_C 284
 #define BOOL_C 285
-#define THEN 286
-#define ELSE 287
+#define INTEGER_T 286
+#define REAL_T 287
+#define CHAR_T 288
+#define BOOL_T 289
+#define THEN 290
+#define ELSE 291
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -122,7 +130,7 @@ union YYSTYPE
   char charVal;
   short boolVal;
 
-#line 126 "y.tab.h" /* yacc.c:1909  */
+#line 134 "y.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

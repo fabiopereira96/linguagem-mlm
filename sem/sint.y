@@ -1,7 +1,7 @@
 
 %{
 	/* Definition section */
-	#include<stdio.h> 
+	#include<stdio.h>
 	#include<stdlib.h>
 	#include "symbolTable.c"
 
@@ -28,9 +28,11 @@
 %type <strVal> factor_a
 %type <strVal> factor
 %type <strVal> constant
+%type <strVal> type
+%type <strVal> ident_list
 
 %token PROGRAM
-%token  COMMA   SINGLE_QUOTES   SEMI_COLON   ASSIGN 
+%token  COMMA   SINGLE_QUOTES   SEMI_COLON   ASSIGN
 %token  BRACKET_OPEN  BRACKET_CLOSE   CURLY_BRACE_OPEN  CURLY_BRACE_CLOSE BIG_BRACKET_OPEN  BIG_BRACKET_CLOSE
 %token COLON
 
@@ -52,6 +54,10 @@
 %token <realVal> REAL_C
 %token <charVal> CHAR_C
 %token <strVal> BOOL_C
+%token <strVal> INTEGER_T
+%token <strVal> REAL_T
+%token <strVal> CHAR_T
+%token <strVal> BOOL_T
 
 %nonassoc <strVal> THEN
 %nonassoc <strVal> ELSE
@@ -66,16 +72,16 @@ decl_list  :  decl_list SEMI_COLON decl 	{;}
 		   |  decl 	{;}
 		   ;
 
-decl  :  ident_list COLON type	{;}
+decl  :  ident_list COLON type	{InstalaLista($1, $3);}
 
-type  : INTEGER_C	{;}
-      | REAL_C	{;}
-      | BOOL_C	{;}
-      | CHAR_C	{;}
+type  : INTEGER_T	{$$ = $1;}
+      | REAL_T	{$$ = $1;}
+      | BOOL_T	{$$ = $1;}
+      | CHAR_T	{$$ = $1;}
       ;
 
-ident_list  :  ident_list COMMA IDENTIFIER	{;}
-			|  IDENTIFIER	{;}
+ident_list  :  ident_list COMMA IDENTIFIER	{char *comma = ","; char* aux = strcat($1, comma); $$ = strcat(aux, $3);}
+			|  IDENTIFIER	{$$ = $1;}
 			;
 
 compound_stmt  :  BEGIN_ stmt_list END	{;}
@@ -93,7 +99,7 @@ stmt  :  assign_stmt	{;}
 	  |  compound_stmt	{;}
 	  ;
 
-assign_stmt  :  IDENTIFIER ASSIGN expr	{Instala($1, $3);}
+assign_stmt  :  IDENTIFIER ASSIGN expr	{Atribui($1, $3);}
 			 ;
 
 if_stmt  :  IF cond THEN stmt	{;}

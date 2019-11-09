@@ -827,22 +827,22 @@ YY_RULE_SETUP
 case 5:
 YY_RULE_SETUP
 #line 40 "lex.l"
-{yylval.strVal = strdup(yytext); return INTEGER_C;}
+{yylval.strVal = strdup(yytext); return INTEGER_T;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 41 "lex.l"
-{yylval.strVal = strdup(yytext); return REAL_C;}
+{yylval.strVal = strdup(yytext); return REAL_T;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 42 "lex.l"
-{yylval.strVal = strdup(yytext); return CHAR_C;}
+{yylval.strVal = strdup(yytext); return CHAR_T;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 43 "lex.l"
-{yylval.strVal = strdup(yytext); return BOOL_C;}
+{yylval.strVal = strdup(yytext); return BOOL_T;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
@@ -1975,3 +1975,4 @@ void yyerror(char *s) {
     printf("ERROR ON LINE %d : \n %s\n", yylineno, s);
     exit(0);
 }
+
