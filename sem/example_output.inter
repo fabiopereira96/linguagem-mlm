@@ -1,0 +1,13 @@
+<'storage', 'valueA', 4, 0>
+<'storage', 'valueB', 4, 0>
+<'storage', 'sumAB', 4, 0>
+
+<'main_begin', 0, 0, 0>
+
+<':=', 10, 0, 'valueA'>
+<':=', 20, 0, 'valueB'>
+
+<'+', valueA, valueB, t1>
+<':=', t1, 0, 'sumAB'>
+
+<'main_end', 0, 0, 0>

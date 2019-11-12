@@ -1,0 +1,24 @@
+program loopSum;
+
+valueA, valueB: integer;
+
+PROCEDURE countInterval(
+  value integer: valueA,
+  value integer: valueB):
+
+  count: integer;
+  begin
+    count := valueA;
+    while
+      write(count);
+      count := count + 1
+    until (count = valueB)
+  end
+
+begin
+  valueA := 1;
+  valueB := 5;
+  countInterval(valueA, valueB)
+end
+
+

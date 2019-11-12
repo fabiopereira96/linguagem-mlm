@@ -1,0 +1,28 @@
+<'storage', 'valueA', 4, 0>
+<'storage', 'valueB', 4, 0>
+
+P1: <'procedure_begin', 'countInterval', 0, 0>
+<'getparam', 0, 4, t1>
+<'getparam', 0, 4, t2>
+<'storage', 'count', 4, 0>
+
+<':=', t2, 0, 'count'>
+
+L1: <'write', 'count', 0, 0>
+<'+', 'count', 1, t3>
+<':=', t3, 0, 'count'>
+<'=', 'count', 'valueB', t4>
+<'not', t4, 0, t5>
+<'jumpif', t5, L1, 0>
+
+<'procedure_end', 'count', 0, 0>
+
+<'main_begin', 0, 0, 0>
+
+<':=', 1, 0, 'valueA'>
+<':=', 5, 0, 'valueB'>
+<'param', 'valueA', 0, 0>
+<'param', 'valueB', 0, 0>
+<'goto', P1, 0, 0>
+
+<'main_end', 0, 0, 0>
